@@ -1,0 +1,48 @@
+const body = document.querySelector("body");
+const mouseCursor = document.querySelector(".mouse-cursor");
+const statement = document.querySelector(".statement");
+document.documentElement.style.cursor = "none";
+const text = statement.textContent;
+console.log(text);
+let size = 20;
+let isMoving = false;
+
+function adjustCursorSize() {
+  if (size >= 0 && isMoving === true) {
+    size += 3;
+ 
+  } else {
+    size -= 3;
+    
+  }
+  
+   mouseCursor.style.width = `${size}px`;
+  mouseCursor.style.height = `${size}px`;
+
+ 
+}
+let timer;
+window.addEventListener("mousemove", function (e) {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+  mouseCursor.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+  // isMoving means the cursor is moving if it's true
+  isMoving = true;
+  clearTimeout(timer)
+  timer = setInterval(() => {
+    isMoving = false;
+    adjustCursorSize();
+  }, 100);
+
+  adjustCursorSize();
+});
+
+// X-ray work
+
+statement.addEventListener("mouseenter", function () {
+  statement.classList.toggle("x-ray");
+});
+
+statement.addEventListener("mouseleave", function () {
+  statement.classList.toggle("x-ray");
+});
