@@ -1,0 +1,40 @@
+h5 {
+  padding: 0;
+  margin:0 ;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+      
+    background: black;
+ 
+}
+
+
+.statement-container {
+  position: absolute;
+  padding-top: 300px;
+  padding-left: 500px;
+}
+
+.statement {
+ 
+  font-size: 30px;
+  
+    color: magenta;
+}
+
+.mouse-cursor {
+  position: absolute;
+  border: 1px magenta solid;
+  height: 2px;
+  width: 2px;
+  border-radius: 50% ;
+  
+}
+
+.x-ray {
+  color: black;
+  text-shadow: 1px 1px 3px pink;
+}
