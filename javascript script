@@ -1,48 +1,48 @@
 const body = document.querySelector("body");
 const mouseCursor = document.querySelector(".mouse-cursor");
-const statement = document.querySelector(".statement");
-document.documentElement.style.cursor = "none";
-const text = statement.textContent;
-console.log(text);
-let size = 20;
-let isMoving = false;
+const statementContainer = document.querySelector(".statement-container");
+const statementOne = document.querySelector(".statement-one");
+const statementTwo = document.querySelector(".statement-two");
 
-function adjustCursorSize() {
-  if (size >= 0 && isMoving === true) {
-    size += 3;
- 
-  } else {
-    size -= 3;
-    
-  }
-  
-   mouseCursor.style.width = `${size}px`;
-  mouseCursor.style.height = `${size}px`;
+document.documentElement.style.cursor = "none"; //this makes the current pointer dissapear
+// const text = statement.textContent;
+// console.log(text);
 
- 
-}
 let timer;
 window.addEventListener("mousemove", function (e) {
   mouseX = e.clientX;
   mouseY = e.clientY;
-  mouseCursor.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+  mouseCursor.style.transform = `translate(${mouseX}px, ${mouseY}px) scale(2)`;
   // isMoving means the cursor is moving if it's true
   isMoving = true;
-  clearTimeout(timer)
+  clearTimeout(timer);
   timer = setInterval(() => {
-    isMoving = false;
-    adjustCursorSize();
+    mouseCursor.style.transform = `translate(${mouseX}px, ${mouseY}px) scale(1)`;
   }, 100);
-
-  adjustCursorSize();
 });
 
 // X-ray work
 
-statement.addEventListener("mouseenter", function () {
-  statement.classList.toggle("x-ray");
+console.log(statementContainer.getBoundingClientRect())
+
+statementContainer.addEventListener("mouseenter", function (e) {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+
+  //// below: these are the rectangular coordinates of the DOM : // 
+  
+  console.log(mouseX, mouseY);
+  
+
+
+  if (mouseX > 507 && mouseX < 854 && mouseY > 326 && mouseY < 394) {
+
+  } else {
+    statementContainer.addEventListener("mouseleave", function (e) {
+
+    });
+  }
 });
 
-statement.addEventListener("mouseleave", function () {
-  statement.classList.toggle("x-ray");
-});
+// console.log(statementContainer.getBoundingClientRect());
+// these are the rectangular coordinates of the DOM : getBoundingClientRect()
